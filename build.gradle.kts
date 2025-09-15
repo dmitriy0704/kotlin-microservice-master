@@ -16,12 +16,22 @@ allprojects {
 
 // ✅ Общие настройки для всех подпроектов
 subprojects {
+    apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.jetbrains.kotlin.jvm")
     group = "dev.folomkin"
     version = "1.0.0"
+
+    // доступ к extension dependencyManagement
+    the<io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension>().apply {
+        imports {
+            mavenBom("org.springframework.cloud:spring-cloud-dependencies:2023.0.3")
+        }
+    }
+
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions.jvmTarget = "21"
     }
+
 
     val appModules = listOf(
         "auth-service",
@@ -37,6 +47,10 @@ subprojects {
                 add(
                     "implementation",
                     "org.springframework.boot:spring-boot-starter-web"
+                )
+                add(
+                    "implementation",
+                    "org.springframework.cloud:spring-cloud-starter-openfeign"
                 )
                 add(
                     "implementation",
@@ -74,4 +88,6 @@ subprojects {
             }
         }
     }
+
 }
+
