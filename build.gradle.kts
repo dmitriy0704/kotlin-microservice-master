@@ -32,14 +32,26 @@ subprojects {
         kotlinOptions.jvmTarget = "21"
     }
 
-
     val appModules = listOf(
         "auth-service",
         "order-service",
         "user-service"
     )
 
+    val feignModules = listOf(
+        "user-service",
+        "order-service"
+    )
+
     plugins.withId("org.jetbrains.kotlin.jvm") {
+        if (name in feignModules) {
+            dependencies {
+                add(
+                    "implementation",
+                    "org.springframework.cloud:spring-cloud-starter-openfeign"
+                )
+            }
+        }
         if (name in appModules) {
             dependencies {
                 add("implementation", project(":shared"))
@@ -48,10 +60,10 @@ subprojects {
                     "implementation",
                     "org.springframework.boot:spring-boot-starter-web"
                 )
-                add(
-                    "implementation",
-                    "org.springframework.cloud:spring-cloud-starter-openfeign"
-                )
+//                add(
+//                    "implementation",
+//                    "org.springframework.cloud:spring-cloud-starter-openfeign"
+//                )
                 add(
                     "implementation",
                     "org.jetbrains.kotlin:kotlin-stdlib"

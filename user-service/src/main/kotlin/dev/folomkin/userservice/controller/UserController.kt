@@ -12,14 +12,14 @@ class UserController {
     @GetMapping("/{id}")
     fun getUser(@PathVariable id: Long): UserDto {
         //-> Мок-данные для примера; замените на реальную логику (например, получение из базы данных)
-        return UserDto(id = id, name = "User-$id", email = "user-email-$id")
+        return UserDto(id = id, username = "User-$id", email = "user-email-$id")
     }
 
     @GetMapping
     fun getAllUsers(): List<UserDto> {
         return listOf(
-            UserDto(id = 1L, name = "Alice", email = "alice@gmail.com"),
-            UserDto(id = 2L, name = "Bob", email = "bob@gmail.com")
+            UserDto(id = 1L, username = "Alice", email = "alice@gmail.com"),
+            UserDto(id = 2L, username = "Bob", email = "bob@gmail.com")
         )
     }
 }

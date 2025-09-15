@@ -2,4 +2,14 @@ spring:
   application:
     name: user-service
 server:
-  port: 8082
+  port: 8083
+
+order-service:
+  url: http://localhost:8084 # URL order-service
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 2000
+        readTimeout: 5000
+        loggerLevel: full
