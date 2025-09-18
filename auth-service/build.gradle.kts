@@ -6,8 +6,10 @@ plugins {
 }
 
 dependencies {
-    implementation("org.springframework.security:spring-security-core:6.0.0")
-//    implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.3.0")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("io.github.microutils:kotlin-logging:3.0.5") // Or the latest version
     implementation("io.jsonwebtoken:jjwt-api:0.13.0")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.13.0")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.13.0")

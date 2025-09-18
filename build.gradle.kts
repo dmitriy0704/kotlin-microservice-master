@@ -64,6 +64,13 @@ subprojects {
 //                    "implementation",
 //                    "org.springframework.cloud:spring-cloud-starter-openfeign"
 //                )
+
+                add(
+                    "implementation",
+                    "org.springframework.boot:spring-boot-starter-security"
+                )
+
+
                 add(
                     "implementation",
                     "org.jetbrains.kotlin:kotlin-stdlib"
